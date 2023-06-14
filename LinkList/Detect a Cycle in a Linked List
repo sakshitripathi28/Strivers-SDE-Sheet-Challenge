@@ -1,0 +1,52 @@
+bool detectCycle(Node *head)
+{
+  //  Write your code here
+    if(head == NULL && head-> next == NULL)
+        return false;
+        
+    Node* slow = head;
+    Node* fast = head;
+
+    while(fast != NULL && fast -> next != NULL)
+    {
+        fast = fast -> next -> next;
+        slow = slow -> next;
+
+        if(fast == slow)
+            return true;
+    }
+    return false;
+}
+
+
+by hashing
+
+class Solution {
+public:
+    bool hasCycle(ListNode *head) {
+
+        if(head == NULL)
+        {
+            return false;
+        }
+
+        map< ListNode* , bool>visited;
+
+        ListNode* temp = head;
+
+        while(temp != NULL)
+        {
+            if(visited[temp] == true)
+            {
+                return true;
+            }
+
+            visited[temp] = true;
+            temp = temp -> next;
+        }
+
+        return false;
+        
+    }
+};
+
